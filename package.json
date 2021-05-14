@@ -1,0 +1,20 @@
+{
+  "name": "thrall-chives",
+  "version": "1.0.0",
+  "description": "this is a website/program built for my lovely girlfriend/fiance/wife.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Drkeck/Thrall-chives.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Drkeck/Thrall-chives/issues"
+  },
+  "homepage": "https://github.com/Drkeck/Thrall-chives#readme"
+}
