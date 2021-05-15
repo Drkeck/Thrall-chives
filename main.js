@@ -8,6 +8,9 @@ function createBrowserWindow() {
         width: 800,
         height: 600,
         autoHideMenuBar: true,
+        frame: false,
+        backgroundColor: '#d1cdb7',
+        title: "",
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
