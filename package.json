@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Drkeck/Thrall-chives/issues"
   },
-  "homepage": "https://github.com/Drkeck/Thrall-chives#readme"
+  "homepage": "https://github.com/Drkeck/Thrall-chives#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^12.0.7"
+  }
 }
