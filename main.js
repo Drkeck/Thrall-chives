@@ -1,5 +1,7 @@
 const path = require('path');
-const fs = require('fs')
+const fs = require('fs');
+const root = fs.readdirSync('/')
+
 const { app, BrowserWindow } = require('electron');
 
 //this creates the browser window, and its paramaters. 
@@ -26,6 +28,7 @@ app.whenReady().then(() => {
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
             createWindow()
+            console.log(root);
           }
         })
     })
