@@ -18,8 +18,8 @@ function createBrowserWindow() {
         }
     })
 
-    win.loadFile('index.html')
-}
+    win.loadFile('index.html');
+};
 
 //this will be run when the app is started and calls the window creation function.
 app.whenReady().then(() => {
@@ -31,10 +31,10 @@ app.whenReady().then(() => {
             console.log(root);
           }
         })
-    })
+    });
       
     app.on('window-all-closed', () => {
         if (process.platform !== 'darwin') {
           app.quit()
     }
-})
+});
