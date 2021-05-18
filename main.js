@@ -12,13 +12,17 @@ function createBrowserWindow() {
         autoHideMenuBar: true,
         frame: false,
         backgroundColor: '#d1cdb7',
-        title: "",
+        title: "Thrall-chives",
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
+            preload: path.join(__dirname, 'preload.js'),
+            nodeIntegration: true,
         }
-    })
+    });
 
-    win.loadFile('index.html');
+    win.loadFile('src/index.html');
+
+    win.webContents.openDevTools();
+
 };
 
 //this will be run when the app is started and calls the window creation function.

@@ -7,3 +7,6 @@ thought it would be a good thing to have to keep some documentation on how clien
 
 ## basically i'm building an archival site
 yeah the name is a play on the word but still would like to give you the headsup now instead of later.
+
+## update
+changed over from using react to making an electron app with word processing.
