@@ -63,5 +63,28 @@ body {
     margin: 20px;
     display: inline-grid;
     box-shadow: var(--textShadow);
+}
+
+.main-li {
+    background-color: var(--menuBackground);
+    transition-duration: 100ms;
+}
+
+.main-li-text {
+    border: solid var(--primary);
+    border-width: 0.1rem 0rem;
+    padding: 0.1rem 1rem;
+}
+
+.main-li:hover {
+    background-color: var(--primary);
+    transition-duration: 100ms;
+}
+
+.main-li:hover .main-li-text {
+    border: solid var(--menuBackground);
+    border-width: 0.1rem 0rem;
+    padding: 0.1rem 1rem;
+    color: var(--menuBackground);
 
 }
