@@ -23,8 +23,7 @@ body {
     -webkit-app-region: drag;
     background-color: var(--primary);
     height: 30px;
-    flex: content;
-    
+    justify-content: center;
 }
 
 .title-bar {
@@ -34,13 +33,20 @@ body {
     letter-spacing: 0.5rem;
     text-shadow: 0.1rem 0.1rem 5px black;
     user-select: none;
+    display: inline-flex;
 }
 
 .btn {
+    -webkit-app-region: no-drag;
     background-color: var(--secondary);
     border: solid var(--primary);
     border-radius: 2px;
     border-width: 0.1rem;
+    float: right;
+    margin: 5px;
+    height: 20px;
+    width: 20px;
+    justify-content: center;
 }
 
 .app {

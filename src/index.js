@@ -13,10 +13,16 @@ function eventhandler (event) {
         case "get":
             text = "Find Existing Client";
             break
+        case "exit":
+            break
+        case "mini":
+            //add minimization
+            break
     }
     //text.
     if (!text) {return}
-        page1.innerHTML = '<h2 class="title-main">' + text + '</h2>';   
+    page1.innerHTML = '<h2 class="title-main">' + text + '</h2>';
+
 }
 
 addEventListener('click', eventhandler);
