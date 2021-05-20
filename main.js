@@ -2,13 +2,14 @@ const path = require('path');
 const fs = require('fs');
 const root = fs.readdirSync('/')
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow } = require('electron')
+require('electron-reload')(__dirname)
 
 //this creates the browser window, and its paramaters. 
 function createBrowserWindow() {
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1000,
+        height: 800,
         autoHideMenuBar: true,
         frame: false,
         backgroundColor: '#d1cdb7',
