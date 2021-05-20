@@ -7,7 +7,6 @@ function eventhandler (event) {
     var id = event.target.id;
     let text;
     switch (id) {
-
         case "post":
             text = "New Client Info";
             break;
