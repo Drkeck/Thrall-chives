@@ -3,11 +3,21 @@ const menu = document.getElementById('menu');
 const page1 = document.getElementById('main-page');
 
 function eventhandler (event) {
-    event.preventDefault()
-    var target = event.target.id
-    if (target === "menu") {
-        page1.innerHTML = "<h1 class='title-main'></h1>";
-    }   
+    event.preventDefault()  
+    var id = event.target.id;
+    let text;
+    switch (id) {
+
+        case "post":
+            text = "New Client Info";
+            break;
+        case "get":
+            text = "Find Existing Client";
+            break
+    }
+    //text.
+    if (!text) {return}
+        page1.innerHTML = '<h2 class="title-main">' + text + '</h2>';   
 }
 
 addEventListener('click', eventhandler);

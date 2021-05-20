@@ -23,6 +23,8 @@ body {
     -webkit-app-region: drag;
     background-color: var(--primary);
     height: 30px;
+    flex: content;
+    
 }
 
 .title-bar {
@@ -31,6 +33,15 @@ body {
     padding: 2px;
     letter-spacing: 0.5rem;
     text-shadow: 0.1rem 0.1rem 5px black;
+    user-select: none;
+}
+
+.btn {
+    background-color: var(--secondary);
+    border: solid var(--primary);
+    border-radius: 2px;
+    border-width: 0.1rem;
+    flex-flow: column;
 }
 
 .app {
@@ -53,8 +64,6 @@ body {
     border-width:  0.1rem 0rem;
     padding: 0.1rem 1rem;
     text-shadow: 0rem 0.2rem var(--textShadowColor);
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none;
 
 }
