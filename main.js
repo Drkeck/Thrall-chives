@@ -4,24 +4,36 @@ const root = fs.readdirSync('/')
 
 const { app, BrowserWindow } = require('electron')
 require('electron-reload')(__dirname)
+const { ipcMain } = require('electron')
+ipcMain.on('asynchronous-message', (event, arg) => {
+    console.log(arg) // prints "ping"
+    event.reply('asynchronous-reply', 'pong')
+    })
+
+    ipcMain.on('synchronous-message', (event, arg) => {
+    console.log(arg) // prints "ping"
+    event.returnValue = 'pong'
+    })
+
+
 
 //this creates the browser window, and its paramaters. 
 function createBrowserWindow() {
     const win = new BrowserWindow({
+        show: false,
         width: 1000,
         height: 800,
         autoHideMenuBar: true,
         frame: false,
-        backgroundColor: '#d1cdb7',
         title: "Thrall-chives",
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
-            nodeIntegration: true,
+            // nodeIntegration: true,
         }
     });
 
     win.loadFile('src/index.html');
-
+    win.once('ready-to-show', () => win.show())
     win.webContents.openDevTools();
 
 };
@@ -37,6 +49,8 @@ app.whenReady().then(() => {
           }
         })
     });
+
+    // In main process.
       
     app.on('window-all-closed', () => {
         if (process.platform !== 'darwin') {
