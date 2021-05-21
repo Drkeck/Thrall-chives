@@ -2,14 +2,6 @@
 const menu = document.getElementById('menu');
 const page1 = document.getElementById('main-page');
 
-// In renderer process (web page).
-console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
-
-ipcRenderer.on('asynchronous-reply', (event, arg) => {
-  console.log(arg) // prints "pong"
-})
-ipcRenderer.send('asynchronous-message', 'ping')
-
 function eventhandler (event) {
     event.preventDefault()  
     var id = event.target.id;
@@ -30,7 +22,6 @@ function eventhandler (event) {
         case "mini":
             //add minimization
             console.log('this will minimize the application');
-            ipcRenderer.send('minimize')
             break
     }
     //text.
