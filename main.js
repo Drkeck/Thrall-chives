@@ -17,15 +17,14 @@ function createBrowserWindow() {
         title: "Thrall-chives",
         webPreferences: {
             preload: path.join(app.getAppPath(), 'preload.js'),
-            contextIsolation: true,
         }
     });
 
     win.loadFile('src/index.html');
-    win.once('ready-to-show', () => win.show())
-    win.webContents.openDevTools();
-    window.electron.doAThing()
-
+    win.once('ready-to-show', () => win.show());
+    const contents = win.webContents;
+    contents.openDevTools();
+    console.log(contents);
 };
 
 //this will be run when the app is started and calls the window creation function.
@@ -39,6 +38,7 @@ app.whenReady().then(() => {
           }
         })
     });
+    
     app.on('window-all-closed', () => {
         if (process.platform !== 'darwin') {
           app.quit()
