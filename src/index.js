@@ -18,6 +18,8 @@ function eventhandler (event) {
             break
         case "exit":
             console.log('this will exit the application');
+            window.api.send("toMain", "some data about how this app should close when this is called");
+            window.api.receive("fromMain", (data) => console.log(data))
             break
         case "mini":
             //add minimization
@@ -27,7 +29,6 @@ function eventhandler (event) {
     //text.
     if (!text) {return}
     page1.innerHTML = '<h1 class="title-main">' + text + '</h1>' + html;
-
 }
 
 addEventListener('click', eventhandler);

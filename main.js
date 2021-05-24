@@ -63,13 +63,10 @@ app.whenReady().then(() => {
                     })
                 }) 
             })
-        }
-        
-        let responseObj
-        
+        }        
         writeFile(data)
               .then( fileData => {
-                  responseObj = fileData
+                  let responseObj = fileData
                   return responseObj
                 })
 
