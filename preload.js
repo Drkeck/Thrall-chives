@@ -11,7 +11,7 @@ contextBridge.exposeInMainWorld(
           // whitelist channels
           let validChannels = ["toMain"];
           if (validChannels.includes(channel)) {
-              ipcRenderer.send(channel, data);
+              ipcRenderer.sendSync(channel, data);
           }
       },
       receive: (channel, func) => {

@@ -1,0 +1,1 @@
+some data about how this app should close when this is called

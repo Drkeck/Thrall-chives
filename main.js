@@ -30,6 +30,28 @@ async function createBrowserWindow() {
     const contents = win.webContents;
     contents.openDevTools();
 };
+// trying to set up ipc main on this being outside of the app creation.
+ipcMain.on("toMain", (event, args) => {
+    // log what the args say just so we know what is being asked of the application.
+    console.log(args);
+    // switch statement to hopefully get the right button presses.
+    switch (args) {
+        case "Close":
+            app.quit();
+            break
+        case "Minimize":
+            app.hide();
+            break
+    }
+
+
+    // fs.readFile("path/to/file", (error, data) => {
+    //   // Do something with file contents
+    
+    //   // Send result back to renderer process
+    //   win.webContents.send("fromMain", responseObj);
+    // })
+});
 
 //this will be run when the app is started and calls the window creation function.
 app.whenReady().then(() => {
@@ -47,36 +69,6 @@ app.whenReady().then(() => {
         if (process.platform !== 'darwin') {
           app.quit()
     }
-
-    ipcMain.on("toMain", (event, args) => {
-        console.log(event, args);
-        const writeFile = fileContent => {
-            return new Promise((resolve, reject) => {
-                fs.writeFile('./genNotes.MD', fileContent, err => {
-                      if (err) {
-                          reject(err);
-                          return;
-                    }
-                    resolve({
-                        ok:   true,
-                        message: 'readme created' 
-                    })
-                }) 
-            })
-        }        
-        writeFile(data)
-              .then( fileData => {
-                  let responseObj = fileData
-                  return responseObj
-                })
-
-        // fs.readFile("path/to/file", (error, data) => {
-        //   // Do something with file contents
-        
-        //   // Send result back to renderer process
-          win.webContents.send("fromMain", responseObj);
-        // })
-    });
 });
 
 

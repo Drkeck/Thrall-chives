@@ -1,8 +1,7 @@
-// this will be filled in later
 const menu = document.getElementById('menu');
 const page1 = document.getElementById('main-page');
 
-function eventhandler (event) {
+async function eventhandler (event) {
     event.preventDefault()  
     var id = event.target.id;
     let text;
@@ -17,13 +16,12 @@ function eventhandler (event) {
             html = "<h2 class='title-secondary'>Finding Client...</h2>"
             break
         case "exit":
-            console.log('this will exit the application');
-            window.api.send("toMain", "some data about how this app should close when this is called");
-            window.api.receive("fromMain", (data) => console.log(data))
+            window.api.send("toMain", "Close");
             break
         case "mini":
             //add minimization
             console.log('this will minimize the application');
+            window.api.send("toMain", "Minimize");
             break
     }
     //text.
