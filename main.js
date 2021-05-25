@@ -31,7 +31,7 @@ async function createBrowserWindow() {
     ipcMain.on("toMain", (event, args) => {
         // log what the args say just so we know what is being asked of the application.
         console.log(args);
-        // switch statement to hopefully get the right button presses.
+        // switch statement so we know what the app is asking for and what to reply with, if its not on this list it is either in the works or was not supposed to be added.
         switch (args) {
             case "Close":
                 app.quit();
@@ -41,7 +41,7 @@ async function createBrowserWindow() {
                 break
         }
     });
-
+    // this will restore the app when it is reopened.
     app.on("Restore", () => {
         win.restore();
     })
