@@ -1,32 +1,40 @@
-const menu = document.getElementById('menu');
-const page1 = document.getElementById('main-page');
-
 async function eventhandler (event) {
     event.preventDefault()  
     var id = event.target.id;
-    let text;
-    let html;
+    let result;
     switch (id) {
         case "post":
-            text = "New Client";
-            html = "<h2 class='title-secondary'>Client Info Form</h2>"
+            result = await window.api.send("toMain", "new Client page");
+            console.log(result)
             break;
         case "get":
-            text = "Find Client";
-            html = "<h2 class='title-secondary'>Finding Client...</h2>"
+            window.api.send("toMain", "Find Client");
             break
         case "exit":
             window.api.send("toMain", "Close");
             break
         case "mini":
-            //add minimization
-            console.log('this will minimize the application');
             window.api.send("toMain", "Minimize");
             break
-    }
-    //text.
-    if (!text) {return}
-    page1.innerHTML = '<h1 class="title-main">' + text + '</h1>' + html;
+    };
+
 }
+
+// window.addEventListener("toRender", (e, ...data) => {
+//     var id = e
+//     console.log(id)
+    // var page = document.getElementById('Mmin-page').innerHTML()
+
+    // switch(id) {
+    //     case "Client Page":
+    //         page = data;
+    //         break
+    //     case "Client Finder":
+    //         page = data;
+    //         break
+    // }
+
+// });
+
 
 addEventListener('click', eventhandler);

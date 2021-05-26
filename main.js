@@ -3,6 +3,7 @@ const fs = require('fs');
 const root = fs.readdirSync('/')
 
 const { app, BrowserWindow, ipcMain } = require('electron');
+const clientForm = require('./src/Javascript');
 require('electron-reload')(__dirname)
 
 
@@ -29,8 +30,6 @@ async function createBrowserWindow() {
     contents.openDevTools();
 
     ipcMain.on("toMain", (event, args) => {
-        // log what the args say just so we know what is being asked of the application.
-        console.log(args);
         // switch statement so we know what the app is asking for and what to reply with, if its not on this list it is either in the works or was not supposed to be added.
         switch (args) {
             case "Close":
@@ -38,6 +37,11 @@ async function createBrowserWindow() {
                 break
             case "Minimize":
                 win.minimize();
+                break
+            case "new Client page":
+                console.log(args);
+                const pageData = clientForm();
+                event.sendReply("new Client page", ...pageData)
                 break
         }
     });
