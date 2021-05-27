@@ -3,10 +3,10 @@ async function eventhandler (event) {
     var id = event.target.id;
     switch (id) {
         case "post":
-            window.api.send("toMain", "new Client page")
+            var result = await window.api.send("toMain", "newClient");
             break
         case "get":
-            window.api.send("toMain");
+            var result = await window.api.send("toMain", "findClient");
             break
         case "exit":
             window.api.send("toMain", "Close");
@@ -17,10 +17,8 @@ async function eventhandler (event) {
     }
 }
 
-window.api.receive(data => {
-    console.log(data)
-})
-
+// result = window.api.receive();
+// console.log(result)
 // window.addEventListener("toRender", (e, ...data) => {
 //     var id = e
 //     console.log(id)

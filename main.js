@@ -3,7 +3,7 @@ const fs = require('fs');
 const root = fs.readdirSync('/')
 
 const { app, BrowserWindow, ipcMain } = require('electron');
-const { clientForm, respond} = require('./src/Javascript');
+const { clientForm } = require('./src/Javascript');
 require('electron-reload')(__dirname)
 
 
@@ -31,9 +31,8 @@ async function createBrowserWindow() {
 
 
 
-    ipcMain.on("toMain", async (event, args) => {
+    ipcMain.on("toMain", async (event, ...args) => {
         let data;
-        let result;
         // switch statement so we know what the app is asking for and what to reply with, if its not on this list it is either in the works or was not supposed to be added.
         switch (args) {
             case "Close":
@@ -42,15 +41,14 @@ async function createBrowserWindow() {
             case "Minimize":
                 win.minimize();
                 break
-            case "new Client page":
+            case "newClient":
                 data = "thing"
-                // event.reply()
-                result = await respond(event, data);
-                return result
+                break            
             default:
                 data = "This application does not run this."
-                result = await respond(event, data);
-                return result
+        }
+        if (data) {
+            event.reply("fromMain", data);
         }
     });
     // this will restore the app when it is reopened.
