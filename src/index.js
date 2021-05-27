@@ -1,14 +1,12 @@
 async function eventhandler (event) {
     event.preventDefault()  
     var id = event.target.id;
-    let result;
     switch (id) {
         case "post":
-            result = await window.api.send("toMain", "new Client page");
-            console.log(result)
-            break;
+            console.log(window.api.send("toMain", "new Client page"))
+            break
         case "get":
-            window.api.send("toMain", "Find Client");
+            window.api.send("toMain");
             break
         case "exit":
             window.api.send("toMain", "Close");
@@ -16,9 +14,13 @@ async function eventhandler (event) {
         case "mini":
             window.api.send("toMain", "Minimize");
             break
-    };
-
+    }
+    window.api.receive(data => {
+        console.log(...data)
+    })
 }
+
+
 
 // window.addEventListener("toRender", (e, ...data) => {
 //     var id = e
