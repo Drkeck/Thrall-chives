@@ -1,3 +1,3 @@
 const clientForm = require('./New-Client-Form');
-
-module.exports = clientForm
+const respond = require('./ipcMainResponse')
+module.exports = { clientForm, respond }

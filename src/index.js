@@ -3,7 +3,7 @@ async function eventhandler (event) {
     var id = event.target.id;
     switch (id) {
         case "post":
-            console.log(window.api.send("toMain", "new Client page"))
+            window.api.send("toMain", "new Client page")
             break
         case "get":
             window.api.send("toMain");
@@ -15,12 +15,11 @@ async function eventhandler (event) {
             window.api.send("toMain", "Minimize");
             break
     }
-    window.api.receive(data => {
-        console.log(...data)
-    })
 }
 
-
+window.api.receive(data => {
+    console.log(data)
+})
 
 // window.addEventListener("toRender", (e, ...data) => {
 //     var id = e

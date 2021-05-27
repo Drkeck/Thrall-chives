@@ -3,7 +3,7 @@ const fs = require('fs');
 const root = fs.readdirSync('/')
 
 const { app, BrowserWindow, ipcMain } = require('electron');
-const clientForm = require('./src/Javascript');
+const { clientForm, respond} = require('./src/Javascript');
 require('electron-reload')(__dirname)
 
 
@@ -29,8 +29,11 @@ async function createBrowserWindow() {
     const contents = win.webContents;
     contents.openDevTools();
 
+
+
     ipcMain.on("toMain", async (event, args) => {
         let data;
+        let result;
         // switch statement so we know what the app is asking for and what to reply with, if its not on this list it is either in the works or was not supposed to be added.
         switch (args) {
             case "Close":
@@ -41,14 +44,14 @@ async function createBrowserWindow() {
                 break
             case "new Client page":
                 data = "thing"
-                break
+                // event.reply()
+                result = await respond(event, data);
+                return result
             default:
-                console.log("why no work");
                 data = "This application does not run this."
-                break
+                result = await respond(event, data);
+                return result
         }
-
-        event.reply("fromMain", "data")
     });
     // this will restore the app when it is reopened.
     app.on("Restore", () => {
