@@ -2,7 +2,7 @@ const {
   contextBridge,
   ipcRenderer
 } = require("electron");
-const {clientForm} = require('./src/Javascript');
+const { clientForm } = require('./src/Javascript');
 
 let validChannels = ["fromMain", "toMain"]
 // Expose protected methods that allow the renderer process to use
@@ -15,7 +15,6 @@ contextBridge.exposeInMainWorld(
       ).then(data => {
         console.log(data)
       })
-
     }
   },
 

@@ -1,16 +1,16 @@
 const app = document.getElementById('main-page')
 console.log(app)
 async function eventhandler (event) {
-    event.preventDefault()  
+    event.preventDefault()
     var id = event.target.id;
-    let result
     switch (id) {
         case "post":
-            console.log(window.api.form())
-            app.innerHTML = window.api.form()
+            // window.api.send("toMain", "newClient");
+            let result = window.api.form()
+            console.log(result)
             break
         case "get":
-            result = await window.api.send("toMain", "findClient");
+            window.api.send("toMain", "findClient");
             break
         case "exit":
             window.api.send("toMain", "Close");

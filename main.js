@@ -41,7 +41,7 @@ async function createBrowserWindow() {
                     win.minimize();
                     break
                 case "newClient":
-                    data = "thing"
+                    data = "made new client"
                     break            
                 default:
                     data = { message: 'Denied' }
