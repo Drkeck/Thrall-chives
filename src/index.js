@@ -1,10 +1,13 @@
+const app = document.getElementById('main-page')
+console.log(app)
 async function eventhandler (event) {
     event.preventDefault()  
     var id = event.target.id;
     let result
     switch (id) {
         case "post":
-            result = await window.api.send("toMain", "newClient");
+            console.log(window.api.form())
+            app.innerHTML = window.api.form()
             break
         case "get":
             result = await window.api.send("toMain", "findClient");
@@ -16,7 +19,8 @@ async function eventhandler (event) {
             window.api.send("toMain", "Minimize");
             break
     }
-    console.log(result)
+    // console.log(result)
 }
+
 
 addEventListener('click', eventhandler);

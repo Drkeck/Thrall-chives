@@ -25,32 +25,35 @@ async function createBrowserWindow() {
 
     win.loadFile('src/index.html');
     win.once('ready-to-show', () => win.show());
-    const contents = win.webContents;
+    const contents = win.webContents
     contents.openDevTools();
 
+    contents.on('did-finish-load', function(){ 
 
-
-    ipcMain.on("toMain", async (event, args) => {
-        let data;
-        // switch statement so we know what the app is asking for and what to reply with, if its not on this list it is either in the works or was not supposed to be added.
-        switch (args) {
-            case "Close":
-                app.quit();
-                break
-            case "Minimize":
-                win.minimize();
-                break
-            case "newClient":
-                data = "thing"
-                break            
-            default:
-                data = "This application does not run this."
-        }
-            event.reply("fromMain", data);
-    });
-    // this will restore the app when it is reopened.
-    app.on("Restore", () => {
-        win.restore();
+        ipcMain.on("toMain", async (event, args) => {
+            let data;
+            // switch statement so we know what the app is asking for and what to reply with, if its not on this list it is either in the works or was not supposed to be added.
+            switch (args) {
+                case "Close":
+                    app.quit();
+                    break
+                case "Minimize":
+                    win.minimize();
+                    break
+                case "newClient":
+                    data = "thing"
+                    break            
+                default:
+                    data = { message: 'Denied' }
+                    break
+            }
+            event.sender.send("fromMain", data)
+        })
+        
+        // this will restore the app when it is reopened.
+        app.on("Restore", () => {
+            win.restore();
+        })
     })
 };
 
