@@ -54,6 +54,7 @@ async function createBrowserWindow() {
                     // set up a second html window with its own css that desplays a denied symbol that flashes at the user.
                     break
             }
+            if (!data) {return}
             event.sender.send("fromMain", data)
         })
         

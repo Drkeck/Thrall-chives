@@ -374,6 +374,12 @@ body {
         -webkit-app-region: no-drag;
         float: right;
         margin: 3px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .main-list-container {
+        padding: 10px;
     }
 
     .main-li  {

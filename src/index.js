@@ -6,37 +6,39 @@ let folder = "home";
 async function eventhandler (event) {
     event.preventDefault()
     var id = event.target.id;
-    var call;
+    var info;
+    console.log(id)
     switch (id) {
         case "post":
-            call ="newClient"
+            info ="newClient"
             break
         case "get":
-            call = "FindClient"
+            info = "FindClient"
             break
         case "exit":
-            call = "Close"
+            info = "Close"
             break
         case "mini":
-            call = "Minimize"
+            info = "Minimize"
             break
         case "back" :
             // will have the application go back to the other pages.
+            break
+        default:
+            // this is where we turn off the error display.
+
     }
-    window.api.send("toMain", call)
+    window.api.send("toMain", info)
 }
 
 
 addEventListener('click', eventhandler);
 
 window.api.receive("fromMain", response => {
-    console.log(response)
-
     if (response === "Denied") {
         // errorBox.class = "system-err"
         return
     }
-
 
     return app.innerHTML = response
 })
