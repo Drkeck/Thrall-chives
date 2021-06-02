@@ -6,20 +6,24 @@ let folder = "home";
 async function eventhandler (event) {
     event.preventDefault()
     var id = event.target.id;
+    var call;
     switch (id) {
         case "post":
-            window.api.send("toMain", "newClient");
+            call ="newClient"
             break
         case "get":
-            window.api.send("toMain", "findClient");
+            call = "FindClient"
             break
         case "exit":
-            window.api.send("toMain", "Close");
+            call = "Close"
             break
         case "mini":
-            window.api.send("toMain", "Minimize");
+            call = "Minimize"
             break
+        case "back" :
+            // will have the application go back to the other pages.
     }
+    window.api.send("toMain", call)
 }
 
 

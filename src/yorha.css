@@ -356,5 +356,29 @@ body {
   iframe {
     border: 0.1rem solid #bab5a1;
   }
-  
+
+  .dark {
+        -webkit-app-region: drag;
+        height: 18px;    
+    }
+
+    .title-bar {
+        user-select: none;
+        display: inline-flex;
+        margin-top: 9px;
+        text-decoration: underline;
+        text-shadow: none;
+    }
+    
+    .btn {
+        -webkit-app-region: no-drag;
+        float: right;
+        margin: 3px;
+    }
+
+    .main-li  {
+        text-decoration: none;
+        list-style: none;
+        text-align: center;
+    }
   

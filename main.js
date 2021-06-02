@@ -51,6 +51,7 @@ async function createBrowserWindow() {
                     console.log(newTree)
                 default:
                     data = 'Denied'
+                    // set up a second html window with its own css that desplays a denied symbol that flashes at the user.
                     break
             }
             event.sender.send("fromMain", data)
