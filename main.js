@@ -3,6 +3,7 @@ const fs = require('fs');
 const root = fs.readdirSync('/')
 
 const { app, BrowserWindow, ipcMain } = require('electron');
+const { clientForm } = require('./src/Javascript');
 require('electron-reload')(__dirname)
 
 
@@ -29,6 +30,7 @@ async function createBrowserWindow() {
     contents.openDevTools();
 
     contents.on('did-finish-load', function(){ 
+        let tree = "home";
 
         ipcMain.on("toMain", async (event, args) => {
             let data;
@@ -41,10 +43,14 @@ async function createBrowserWindow() {
                     win.minimize();
                     break
                 case "newClient":
-                    data = "made new client"
-                    break            
+                    data = clientForm();
+                    tree = "home/newCli"
+                    break
+                case "back":
+                    newTree = tree.split("/")
+                    console.log(newTree)
                 default:
-                    data = { message: 'Denied' }
+                    data = 'Denied'
                     break
             }
             event.sender.send("fromMain", data)

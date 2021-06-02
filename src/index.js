@@ -1,13 +1,14 @@
 const app = document.getElementById('main-page')
-console.log(app)
+const errorBox = document.getElementById('err-box')
+
+let folder = "home";
+
 async function eventhandler (event) {
     event.preventDefault()
     var id = event.target.id;
     switch (id) {
         case "post":
-            // window.api.send("toMain", "newClient");
-            let result = window.api.form()
-            console.log(result)
+            window.api.send("toMain", "newClient");
             break
         case "get":
             window.api.send("toMain", "findClient");
@@ -19,8 +20,19 @@ async function eventhandler (event) {
             window.api.send("toMain", "Minimize");
             break
     }
-    // console.log(result)
 }
 
 
 addEventListener('click', eventhandler);
+
+window.api.receive("fromMain", response => {
+    console.log(response)
+
+    if (response === "Denied") {
+        // errorBox.class = "system-err"
+        return
+    }
+
+
+    return app.innerHTML = response
+})
