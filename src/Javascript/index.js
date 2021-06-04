@@ -1,2 +1,3 @@
 const clientForm = require('./New-Client-Form');
-module.exports = { clientForm }
+const profile = require('./profile')
+module.exports = { clientForm, profile }

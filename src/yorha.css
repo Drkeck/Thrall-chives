@@ -387,4 +387,20 @@ body {
         list-style: none;
         text-align: center;
     }
-  
+    .doccer-menu {
+        position: fixed;
+        bottom: 1%;
+        width: 98%;
+    }
+
+    .off {
+        list-style: none;
+        display: none;
+    }
+
+    .on {
+        list-style: none;
+        display: block;
+        transition-duration: 10ms;
+    }
+    

@@ -1,5 +1,6 @@
 const app = document.getElementById('main-page')
 const errorBox = document.getElementById('err-box')
+const backButton = document.getElementById('back')
 
 let folder = "home";
 
@@ -7,7 +8,6 @@ async function eventhandler (event) {
     event.preventDefault()
     var id = event.target.id;
     var info;
-    console.log(id)
     switch (id) {
         case "post":
             info ="newClient"
@@ -21,8 +21,8 @@ async function eventhandler (event) {
         case "mini":
             info = "Minimize"
             break
-        case "back" :
-            // will have the application go back to the other pages.
+        case "back":
+            info = "back"
             break
         default:
             // this is where we turn off the error display.
@@ -40,5 +40,6 @@ window.api.receive("fromMain", response => {
         return
     }
 
+    backButton.classList = "on button";
     return app.innerHTML = response
 })

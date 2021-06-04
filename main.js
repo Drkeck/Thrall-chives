@@ -3,7 +3,7 @@ const fs = require('fs');
 const root = fs.readdirSync('/')
 
 const { app, BrowserWindow, ipcMain } = require('electron');
-const { clientForm } = require('./src/Javascript');
+const { clientForm, profile } = require('./src/Javascript');
 require('electron-reload')(__dirname)
 
 
@@ -33,27 +33,8 @@ async function createBrowserWindow() {
         let tree = "home";
 
         ipcMain.on("toMain", async (event, args) => {
-            let data;
-            // switch statement so we know what the app is asking for and what to reply with, if its not on this list it is either in the works or was not supposed to be added.
-            switch (args) {
-                case "Close":
-                    app.quit();
-                    break
-                case "Minimize":
-                    win.minimize();
-                    break
-                case "newClient":
-                    data = clientForm();
-                    tree = "home/newCli"
-                    break
-                case "back":
-                    newTree = tree.split("/")
-                    console.log(newTree)
-                default:
-                    data = 'Denied'
-                    // set up a second html window with its own css that desplays a denied symbol that flashes at the user.
-                    break
-            }
+           let data;
+            if (args === "back")
             if (!data) {return}
             event.sender.send("fromMain", data)
         })
