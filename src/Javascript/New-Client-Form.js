@@ -1,8 +1,2 @@
-
-function clientForm() {
-    return mainPage = `
-    <h1>ITS DATA BABE</h1>
-    `
-}
-
-module.exports = clientForm
+// THIS WILL BE THE JAVASCRIPT FOR COMPLETING THE NEW CLIENT FORM
+// AT THE MOMENT THE FORM DOESN'T EXIST SO THE JAVASCRIPT DOESN'T EITHER.
