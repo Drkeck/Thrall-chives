@@ -3,7 +3,7 @@ const fs = require('fs');
 const root = fs.readdirSync('/')
 
 const { app, BrowserWindow, ipcMain } = require('electron');
-const { clientForm, profile } = require('./src/Javascript');
+const routeManager = require('./server-side/Routes');
 require('electron-reload')(__dirname)
 
 
@@ -33,10 +33,20 @@ async function createBrowserWindow() {
         let tree = "home";
 
         ipcMain.on("toMain", async (event, args) => {
-           let data;
-            if (args === "back")
-            if (!data) {return}
-            event.sender.send("fromMain", data)
+           await routeManager(args)
+           .then( response => {
+                if (!response) {
+                    return
+                }
+                if (response === "back") {
+                    win.loadFile('src/index.html')
+                    return
+                }
+                event.sender.send("fromMain", response)
+           })
+           .catch(err => {
+               console.log (err)
+           })
         })
         
         // this will restore the app when it is reopened.

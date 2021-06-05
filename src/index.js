@@ -22,7 +22,7 @@ async function eventhandler (event) {
             info = "Minimize"
             break
         case "back":
-            info = "back"
+            // info = "back"
             break
         default:
             // this is where we turn off the error display.
@@ -43,3 +43,7 @@ window.api.receive("fromMain", response => {
     backButton.classList = "on button";
     return app.innerHTML = response
 })
+
+window.api.receive("error", response => {
+    errorBox.classList = "system-err"
+});

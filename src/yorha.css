@@ -388,9 +388,10 @@ body {
         text-align: center;
     }
     .doccer-menu {
-        position: fixed;
-        bottom: 1%;
+        position: absolute;
+        bottom: 0%;
         width: 98%;
+        margin: 0 0;
     }
 
     .off {

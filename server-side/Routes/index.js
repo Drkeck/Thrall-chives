@@ -1,18 +1,19 @@
-const clientForm = require('./newClientForm');
-const profile = require('./profile')
-function routeManager (args) {
+const clientForm = require('./newClientForm.js');
+const profile = require('./Profile.js');
+
+async function routeManager (args) {
     
     switch (args) {
         case "newClient":
             //thing
             return clientForm()
-        case "profile":
+        case "Profile":
+        case "FindClient":
             //thing
             return profile()
         case "back":
             //thing
-            console.log('working on it')
-            return "working on it"
+            return "back"
         default:
             return
     }
