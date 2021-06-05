@@ -30,7 +30,7 @@ async function createBrowserWindow() {
     contents.openDevTools();
 
     contents.on('did-finish-load', function(){ 
-        let tree = "home";
+        let tree = ["home"]
 
         ipcMain.on("toMain", async (event, args) => {
            await routeManager(args)
