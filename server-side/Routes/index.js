@@ -5,12 +5,12 @@ async function routeManager (args, tree) {
     console.log(tree)
     switch (args) {
         case "newClient":
-            tree
             return clientForm()
         case "Profile":
         case "FindClient":
             //thing
             return profile()
+        case "home":
         case "back":
             // completely random thought but make a game where you unlock the guide showing the hidden treasures by leveling up.
             // could make it a path to gear a specific way (good example would be a tutorial, or a seasonal event.)
@@ -32,7 +32,7 @@ async function routeManager (args, tree) {
             // this sort of encrryption probabaably already exists. (ps. could encrypt every single message this way so it would basically be changing its patterns making it even harder to decode)
 
             // i wonder if you could make a central library for language basically building it down to a series of numbers that you pull from to formulate a word, a sentence, a paragraph, a.... this is just encryption.
-            return 
+            return "back"
         default:
             return
     }

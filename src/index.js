@@ -16,10 +16,10 @@ async function eventhandler (event) {
             info = "FindClient"
             break
         case "exit":
-            info = "Close"
+            info = "exit"
             break
         case "mini":
-            info = "Minimize"
+            info = "minimize"
             break
         case "back":
             // info = "back"

@@ -383,10 +383,11 @@ body {
     }
 
     .main-container {
-      overflow: scroll;
-      height: 0vmin;
+      overflow: auto;
+      height: auto;
       width: auto;
-      scroll-behavior: smooth;    }
+      scroll-behavior: smooth;
+    }
 
     .main-li  {
         text-decoration: none;

@@ -32,30 +32,31 @@ async function createBrowserWindow() {
 
     contents.on('did-finish-load', function(){ 
 
-
         ipcMain.on("toMain", async (event, args) => {
-            switch(args) {
+            switch (args) {
                 case "minimize":
-                    win.minimize
+                    win.minimize()
                     break
                 case "exit":
-                    app.exit
+                    app.quit()
                     break
+                default:
+
+                    await routeManager(args, tree)
+                        .then(response => {
+                            if (!response) {
+                                return
+                            }
+                            if (response === "back") {
+                                win.loadFile('src/index.html')
+                                return
+                            }
+                            event.sender.send("fromMain", response)
+                        })
+                        .catch(err => {
+                            console.log(err)
+                        })
             }
-           await routeManager(args, tree)
-           .then( response => {
-                if (!response) {
-                    return
-                }
-                if (response === "back") {
-                    win.loadFile('src/index.html')
-                    return
-                }
-                event.sender.send("fromMain", response)
-           })
-           .catch(err => {
-               console.log (err)
-           })
         })
         
         // this will restore the app when it is reopened.
