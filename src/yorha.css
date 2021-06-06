@@ -378,9 +378,15 @@ body {
         height: 20px;
     }
 
-    .main-list-container {
-        padding: 10px;
+    .list-container {
+      padding: 10px;
     }
+
+    .main-container {
+      overflow: scroll;
+      height: 0vmin;
+      width: auto;
+      scroll-behavior: smooth;    }
 
     .main-li  {
         text-decoration: none;

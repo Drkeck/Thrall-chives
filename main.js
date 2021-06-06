@@ -9,6 +9,7 @@ require('electron-reload')(__dirname)
 
 //this creates the browser window, and its paramaters. 
 async function createBrowserWindow() {
+    let tree = ["home"]
     const win = new BrowserWindow({
         show: false,
         width: 1000,
@@ -30,10 +31,18 @@ async function createBrowserWindow() {
     contents.openDevTools();
 
     contents.on('did-finish-load', function(){ 
-        let tree = ["home"]
+
 
         ipcMain.on("toMain", async (event, args) => {
-           await routeManager(args)
+            switch(args) {
+                case "minimize":
+                    win.minimize
+                    break
+                case "exit":
+                    app.exit
+                    break
+            }
+           await routeManager(args, tree)
            .then( response => {
                 if (!response) {
                     return
