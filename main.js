@@ -9,7 +9,7 @@ require('electron-reload')(__dirname)
 
 //this creates the browser window, and its paramaters. 
 async function createBrowserWindow() {
-    let tree = ["home"]
+    let tree = { home:{}};
     const win = new BrowserWindow({
         show: false,
         width: 1000,
@@ -58,7 +58,6 @@ async function createBrowserWindow() {
                         })
             }
         })
-        
         // this will restore the app when it is reopened.
         app.on("Restore", () => {
             win.restore();

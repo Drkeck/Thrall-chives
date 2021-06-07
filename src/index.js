@@ -4,16 +4,16 @@ const backButton = document.getElementById('back')
 
 let folder = "home";
 
-async function eventhandler (event) {
-    event.preventDefault()
-    var id = event.target.id;
+async function validChannels (id) {
     var info;
     switch (id) {
         case "post":
             info ="newClient"
+            folder = "home/newClientForm"
             break
         case "get":
-            info = "FindClient"
+            info = "Client"
+            folder = "home/clients/" + "--sampleUser--" 
             break
         case "exit":
             info = "exit"
@@ -22,25 +22,46 @@ async function eventhandler (event) {
             info = "minimize"
             break
         case "back":
-            // info = "back"
+            info = "back"
+            break
+        case "home":
+            info = "home"
+            folder = "home"
             break
         default:
             // this is where we turn off the error display.
-
     }
-    window.api.send("toMain", info)
+    return info
+}
+
+async function sendMessage (note) {
+    if (!note) {
+        return
+    }
+    window.api.send("toMain", note)
+}
+
+async function eventhandler (event) {
+    event.preventDefault()
+    var id = event.target.id;
+    validChannels(id)
+    .then(res => {
+        sendMessage (res)
+    })
 }
 
 
 addEventListener('click', eventhandler);
+sendMessage("home");
 
 window.api.receive("fromMain", response => {
     if (response === "Denied") {
         // errorBox.class = "system-err"
         return
+    } else if (folder != "home") {
+        backButton.classList = "on button";
     }
 
-    backButton.classList = "on button";
     return app.innerHTML = response
 })
 
