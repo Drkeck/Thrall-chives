@@ -2,6 +2,9 @@ const path = require('path');
 const fs = require('fs');
 const root = fs.readdirSync('/')
 
+// server connection.
+const client = require('./server-side/connection')
+
 const { app, BrowserWindow, ipcMain } = require('electron');
 const routeManager = require('./server-side/Routes');
 require('electron-reload')(__dirname)
@@ -29,9 +32,10 @@ async function createBrowserWindow() {
     win.once('ready-to-show', () => win.show());
     const contents = win.webContents
     contents.openDevTools();
+    client.connect()
+
 
     contents.on('did-finish-load', function(){ 
-
         ipcMain.on("toMain", async (event, args) => {
             switch (args) {
                 case "minimize":
