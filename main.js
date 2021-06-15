@@ -3,7 +3,7 @@ const fs = require('fs');
 const root = fs.readdirSync('/')
 
 // server connection.
-const client = require('./server-side/connection')
+const client = require('./server-side/connection/connection.js')
 
 const { app, BrowserWindow, ipcMain } = require('electron');
 const routeManager = require('./server-side/Routes');
@@ -33,6 +33,7 @@ async function createBrowserWindow() {
     const contents = win.webContents
     contents.openDevTools();
     client.connect()
+
 
 
     contents.on('did-finish-load', function(){ 
