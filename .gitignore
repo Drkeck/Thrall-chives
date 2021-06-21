@@ -1,4 +1,4 @@
 /node_modules
 out/
 test.html
-connection.js
+index.js
