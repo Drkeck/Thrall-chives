@@ -7,7 +7,7 @@ const routeManager = require('./server-side/Routes');
 require('electron-reload')(__dirname)
 
 
-//this creates the browser window, and its paramaters. 
+//this creates the browser window, and its parameters. 
 async function createBrowserWindow() {
     let tree = { home:{}};
     const win = new BrowserWindow({
@@ -25,9 +25,9 @@ async function createBrowserWindow() {
         }
     });
 
-    win.loadFile('src/index.html');
     win.once('ready-to-show', () => win.show());
-    const contents = win.webContents
+    win.loadFile('src/index.html');
+    const contents = win.webContents;
     contents.openDevTools();
 
     contents.on('did-finish-load', function(){ 
@@ -55,6 +55,7 @@ async function createBrowserWindow() {
                         })
                         .catch(err => {
                             console.log(err)
+                            event.sender.send("from main", err);
                         })
             }
         })
