@@ -6,4 +6,10 @@ let appData = [{ userData: {
     
 }}];
 
-module.exports = appData
+function changeAppData (data, changeType, changeData) {
+    console.log(data);
+    console.log(changeType);
+    console.log(changeData);
+}
+
+module.exports = { appData, changeAppData }

@@ -1,9 +1,10 @@
 const path = require('path');
 const fs = require('fs');
 const root = fs.readdirSync('/')
+const { appData , changeAppData } = require('./src/Javascript/state')
 
 // server connection.
-const client = require('./server-side/connection/connection.js')
+const client = require('./server-side/connection')
 
 const { app, BrowserWindow, ipcMain } = require('electron');
 const routeManager = require('./server-side/Routes');
