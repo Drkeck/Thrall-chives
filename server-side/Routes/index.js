@@ -2,11 +2,9 @@ const homeList = require('./Homelist.js');
 const clientForm = require('./newClientForm.js');
 const profile = require('./Profile.js');
 
-async function routeManager (args, tree) {
-    console.log(tree)
+async function routeManager (args) {
     switch (args) {
         case "newClient":
-            tree
             return clientForm()
         case "Profile":
         case "Client":

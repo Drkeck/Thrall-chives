@@ -1,16 +1,22 @@
 // THIS IS COPY PASTE FROM INDEX.HTML BUT FOR THE TIME BEING I AM NOT WORRYING ABOUT IT.
+const run = require('../connection')
+console.log(run)
+
 function homeList () {
     return`
     <h1 class="title-main">Data Management:</h1>
     <figure>
-        <figcaption class="title-secondary">Find Client..</figcaption>
-        <ul class="main-container list-container">
-            <li class="list-item main-li post button" id="post">
-                <h3 class="main-li-text" id="post">New Client</h3>
-            </li>
-            <hr/>
-            <li class="list-item main-li put button" id="get">
-                <h3 class="main-li-text" id="get">Find Client</h3>
+        <figcaption class="title-secondary">
+            ..Find Client..
+        </figcaption>
+        <ul>
+            <li class="button">
+                <figure>
+                    <figcaption>
+                        *test user*
+                    </figcaption>
+                    <p>*test description*</p>
+                </figure>
             </li>
         </ul>
     </figure>

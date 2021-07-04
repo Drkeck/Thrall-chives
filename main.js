@@ -4,7 +4,7 @@ const root = fs.readdirSync('/')
 const { appData , changeAppData } = require('./src/Javascript/state')
 
 // server connection.
-const client = require('./server-side/connection')
+const run = require('./server-side/connection')
 
 const { app, BrowserWindow, ipcMain } = require('electron');
 const routeManager = require('./server-side/Routes');
@@ -13,7 +13,6 @@ require('electron-reload')(__dirname)
 
 //this creates the browser window, and its parameters. 
 async function createBrowserWindow() {
-    let tree = { home:{}};
     const win = new BrowserWindow({
         show: false,
         width: 1000,
@@ -31,10 +30,10 @@ async function createBrowserWindow() {
 
     win.once('ready-to-show', () => win.show());
     win.loadFile('src/index.html');
+    routeManager('home')
     const contents = win.webContents;
     contents.openDevTools();
-    client.connect()
-
+    run()
 
 
     contents.on('did-finish-load', function(){ 
@@ -48,7 +47,7 @@ async function createBrowserWindow() {
                     break
                 default:
 
-                    await routeManager(args, tree)
+                    await routeManager(args)
                         .then(response => {
                             if (!response) {
                                 return
