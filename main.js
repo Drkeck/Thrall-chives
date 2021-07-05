@@ -1,7 +1,9 @@
 const path = require('path');
 const fs = require('fs');
 const root = fs.readdirSync('/')
-const { appData , changeAppData } = require('./src/Javascript/state')
+// const { appData , changeAppData } = require('./src/Javascript/state')
+require('dotenv').config()
+
 
 // server connection.
 const run = require('./server-side/connection')
