@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Drkeck/Thrall-chives#readme",
   "dependencies": {
     "css.gg": "^2.0.0",
+    "dotenv": "^10.0.0",
     "electron-reload": "^1.5.0",
     "electron-squirrel-startup": "^1.0.0",
     "mongodb": "^3.6.9"
