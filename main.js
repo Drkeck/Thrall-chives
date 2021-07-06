@@ -33,7 +33,7 @@ async function createBrowserWindow() {
     routeManager('home')
     const contents = win.webContents;
     contents.openDevTools();
-    run()
+    run();
 
 
     contents.on('did-finish-load', function(){ 
