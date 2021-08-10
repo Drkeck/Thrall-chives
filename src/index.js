@@ -46,6 +46,7 @@ async function eventhandler (event) {
     var id = event.target.id;
     validChannels(id)
     .then(res => {
+        if (!res) { return }
         sendMessage (res)
     })
 }
@@ -60,7 +61,7 @@ window.api.receive("fromMain", response => {
     } else if (folder != "home") {
         backButton.classList = "on button";
     }
-
+    console.log(response)
     return app.innerHTML = response
 })
 

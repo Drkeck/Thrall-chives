@@ -1,12 +1,12 @@
 const path = require('path');
 const fs = require('fs');
 const root = fs.readdirSync('/')
-// const { appData , changeAppData } = require('./src/Javascript/state')
+require('events').EventEmitter.defaultMaxListeners = 15;
 require('dotenv').config()
 
 
 // server connection.
-const run = require('./server-side/connection')
+const {getOne, getAll} = require('./server-side/connection/types')
 
 const { app, BrowserWindow, ipcMain } = require('electron');
 const routeManager = require('./server-side/Routes');
@@ -34,7 +34,6 @@ async function createBrowserWindow() {
     win.loadFile('src/index.html');
     const contents = win.webContents;
     contents.openDevTools();
-    run();
 
 
     contents.on('did-finish-load', function(){ 
@@ -51,10 +50,6 @@ async function createBrowserWindow() {
                     await routeManager(args)
                         .then(response => {
                             if (!response) {
-                                return
-                            }
-                            if (response === "back") {
-                                win.loadFile('src/index.html')
                                 return
                             }
                             event.sender.send("fromMain", response)

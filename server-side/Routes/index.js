@@ -13,7 +13,7 @@ async function routeManager (args) {
         case "home":
             return homeList()
         case "back":
-            return "back"
+            return homeList()
         default:
             return
     }
