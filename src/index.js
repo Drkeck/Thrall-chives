@@ -52,7 +52,6 @@ async function eventhandler (event) {
 
 
 addEventListener('click', eventhandler);
-sendMessage("home");
 
 window.api.receive("fromMain", response => {
     if (response === "Denied") {

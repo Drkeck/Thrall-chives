@@ -32,7 +32,6 @@ async function createBrowserWindow() {
 
     win.once('ready-to-show', () => win.show());
     win.loadFile('src/index.html');
-    routeManager('home')
     const contents = win.webContents;
     contents.openDevTools();
     run();

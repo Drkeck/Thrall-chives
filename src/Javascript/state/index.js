@@ -2,7 +2,7 @@
 let appData = [{ userData: {
     currentView: "home",
     lastView: '',
-    LatestData: {},
+    Data: {},
     
 }}];
 
