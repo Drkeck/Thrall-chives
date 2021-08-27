@@ -1,5 +1,7 @@
+const { getAll } = require("../../server-side/connection/types")
+
 // will be filled in later, technically this already has been made in the INDEX.JS FILE.
-const run = require('../../server-side/connection')
+const List = getAll()
 
 const users = run
 

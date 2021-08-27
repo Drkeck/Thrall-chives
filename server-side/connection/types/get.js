@@ -7,7 +7,7 @@ async function getAll() {
       const db = client.db(database)
       const clients = db.collection(collection)
 
-      const thing = await clients.find({Name})
+      const thing = await clients.find()
       return thing
     } catch(err) {
       console.log(err.stack)
